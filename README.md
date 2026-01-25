@@ -15,7 +15,12 @@ The goal is not perfection, but progression—using code as a medium to think, t
 ## Learning Index
 
 ### Day 1
+- **Hello World**: First Python program
+- **Data Types**: Strings, integers, floats, booleans, type checking
+- **Numbers & Math Operations**: Arithmetic operators, order of operations, modulo, exponents
+- **Strings**: String manipulation, concatenation, slicing, methods (upper, lower, strip, etc.)
 - **Booleans & Conditionals**: Comparison operators, if/elif/else statements, logical operators (and/or/not), nested conditionals
+- **Mini-project**: Report card grade calculator
 
 ### Day 2
 - **Variables**: Variable assignment, naming conventions, type declarations, variable exercises
@@ -23,7 +28,9 @@ The goal is not perfection, but progression—using code as a medium to think, t
 - **Built-in Functions**: Exploring Python's built-in functions (print, len, type, input, range, etc.)
 
 ### Day 3
+- **Loops & Sequences**: For loops, while loops, ranges, lists, tuples, enumerate, zip
 - **Functions & Validation**: Character creation with input validation, type checking, string operations
+- **Complex Numbers**: Introduction to complex number handling in Python
 - **Matplotlib & 3D Plotting**: 
   - NumPy arrays and meshgrids
   - 3D surface plotting with matplotlib
