@@ -2,6 +2,8 @@ import numpy as np #Numerical operations
 import matplotlib.pyplot as plt #Plotting library
 from mpl_toolkits.mplot3d import Axes3D #3D plotting toolkit
 
+#visit matplotlib docs for more info: https://matplotlib.org/stable/users/index.html
+
 #Coordinate finder function
 def find_coordinates(X, Y, Z, equation, safe_dict):
     """Find coordinates on the surface based on user input"""
