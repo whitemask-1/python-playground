@@ -94,7 +94,7 @@ print(False and False) # False
 #Also known as a short-circuit operator, if the first operand is False, Python does not evaluate the second operand because the overall expression will be False regardless.
 #Evaluation stops as soon as the result is determined.
 print(False and (1 / 0 == 0))  # False, does not raise an error
-print(bool(1 / 0 == 0))  # Raises ZeroDivisionError
+#print(bool(1 / 0 == 0))  # Raises ZeroDivisionError
 
 #The or operator returns True if at least one of the operands is true, otherwise it returns False.
 print(True or True)    # True
@@ -106,3 +106,14 @@ print(False or False)  # False
 print(not True)        # False
 print(not False)       # True
 
+#You can combine these operators to create complex boolean expressions.
+x = 10
+y = 20
+z = 30
+print((x < y) and (y < z))  # True
+print((x > y) or (y < z))   # True
+print(not (x == y))         # True
+print((x < y) and not (z < y))  # True
+#Remember to use parentheses to group expressions and clarify the order of evaluation when combining multiple boolean operators.
+print((x < y) or (y > z) and (z == 30))  # True, 'and' has higher precedence than 'or'
+print(((x < y) or (y > z)) and (z == 30))  # True, parentheses clarify the order

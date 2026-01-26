@@ -14,27 +14,156 @@ The goal is not perfection, but progression—using code as a medium to think, t
 
 ## Learning Index
 
-### Day 1
-- **Hello World**: First Python program
-- **Data Types**: Strings, integers, floats, booleans, type checking
-- **Numbers & Math Operations**: Arithmetic operators, order of operations, modulo, exponents
-- **Strings**: String manipulation, concatenation, slicing, methods (upper, lower, strip, etc.)
-- **Booleans & Conditionals**: Comparison operators, if/elif/else statements, logical operators (and/or/not), nested conditionals
-- **Mini-project**: Report card grade calculator
+## Day 1: Python Fundamentals
 
-### Day 2
-- **Variables**: Variable assignment, naming conventions, type declarations, variable exercises
-- **Functions & Scope**: Function definitions, parameters, return values, local vs global scope, Caesar cipher implementation
-- **Built-in Functions**: Exploring Python's built-in functions (print, len, type, input, range, etc.)
+### Core Concepts
+- **Hello World** (`hello-world.py`): First Python program, print statements, basic syntax
+- **Data Types** (`data-types.py`): 
+  - Primitive types: `int`, `float`, `str`, `bool`
+  - Type checking with `type()`
+  - Type conversion and casting
+  - Understanding mutable vs immutable types
 
-### Day 3
-- **Loops & Sequences**: For loops, while loops, ranges, lists, tuples, enumerate, zip
-- **Functions & Validation**: Character creation with input validation, type checking, string operations
-- **Complex Numbers**: Introduction to complex number handling in Python
-- **Matplotlib & 3D Plotting**: 
-  - NumPy arrays and meshgrids
-  - 3D surface plotting with matplotlib
-  - Interactive plotting (non-blocking mode)
-  - Built a 3D equation plotter with coordinate finder
-  - Safe equation evaluation with restricted namespaces
-  - Boolean masking and array searching
+- **Numbers & Mathematical Operations** (`numbers+mathematical-ops.py`):
+  - Arithmetic operators: `+`, `-`, `*`, `/`, `//`, `%`, `**`
+  - Order of operations (PEMDAS)
+  - Integer vs float division
+  - Modulo operations and exponentiation
+
+- **Strings** (`strings.py`):
+  - String creation and indexing
+  - String slicing and concatenation
+  - String methods: `.upper()`, `.lower()`, `.strip()`, `.split()`, `.join()`
+  - String formatting: f-strings, `.format()`
+  - Escape characters and raw strings
+
+- **Booleans & Conditionals** (`bools+conditionals.py`):
+  - Boolean values: `True`, `False`
+  - Comparison operators: `==`, `!=`, `<`, `>`, `<=`, `>=`
+  - Logical operators: `and`, `or`, `not`
+  - `if`, `elif`, `else` statements
+  - Nested conditionals and truthiness
+
+### Projects
+- **Report Card (FreeCodeCamp)** (`report-card(FCC).py`): 
+  - Applied conditionals for grade calculation
+  - User input handling
+  - Conditional logic and decision trees
+
+### Key Concepts Learned
+- Python syntax and indentation
+- Variable naming conventions
+- Type system and dynamic typing
+- Control flow with conditionals
+- String manipulation and formatting
+- Basic I/O with `print()` and `input()`
+
+---
+
+## Day 2: Functions, Scope & Built-in Tools
+
+### Functions & Scope
+- **Functions** (`func.py`):
+  - Function definition with `def`
+  - Parameters and arguments (positional, keyword, default)
+  - Return values vs `None`
+  - Docstrings and function documentation
+  - `*args` and `**kwargs` for variable arguments
+
+- **Scope** (`scope.py`):
+  - Local vs global scope
+  - `global` and `nonlocal` keywords
+  - LEGB rule (Local, Enclosing, Global, Built-in)
+  - Scope resolution and variable shadowing
+  - Closure concepts
+
+### Variables
+- **Variables** (`variables.py`):
+  - Variable assignment and reassignment
+  - Multiple assignment
+  - Variable naming best practices
+  - Constants convention (UPPER_CASE)
+
+- **Variable Exercises** (`var-exercises.py`):
+  - Practical variable manipulation problems
+  - Swapping variables
+  - Accumulator patterns
+
+### Built-in Functions
+- **Built-in Functions** (`builtinfuncs.py`):
+  - Common functions: `len()`, `sum()`, `min()`, `max()`, `abs()`
+  - Type conversion: `int()`, `float()`, `str()`, `bool()`
+  - Input/output: `input()`, `print()`
+  - Utility functions: `range()`, `sorted()`, `reversed()`
+  - `help()` and `dir()` for introspection
+
+### Projects
+- **Caesar Cipher** (`ceasar-cipher.py`):
+  - String manipulation and character shifting
+  - Modulo arithmetic for wrapping
+  - Function composition
+  - Encryption/decryption logic
+
+### Key Concepts Learned
+- Function design and modularity
+- Scope and namespace management
+- DRY principle (Don't Repeat Yourself)
+- Code organization and reusability
+- Working with Python's standard library
+
+---
+
+### Day 3: Advanced Data Structures, Functional Programming & 3D Visualization
+
+### Loops + Sequences
+- **Lists** (`lists.py`): Mutable sequences, list methods, slicing, and common operations
+- **Tuples** (`tuples.py`): Immutable sequences, tuple packing/unpacking, use cases
+- **Ranges** (`ranges.py`): Efficient sequence generation with `range()`
+- **Loops** (`loops.py`): `for` and `while` loops, `break`, `continue`, loop patterns
+- **Enumerate & Zip** (`enumerate+zip.py`): Iterate with indices, combine iterables
+- **List Comprehensions** (`list-comprehensions.py`): Concise list creation, filtering, nested comprehensions
+- **Lambda Functions** (`lambda-funcs.py`): Anonymous functions, `map()`, `filter()`, `reduce()`, functional programming
+
+### Complex Numbers & Mathematical Concepts
+- **Complex Numbers** (`complex-nums`): Complex number operations, magnitude, conjugates
+- **RPG Character System** (`rpg-character.py`): Applied programming with classes and game logic
+
+### Matplotlib Experiments
+
+#### Calculus 3 Homework Visualizations
+- **3D Plotting Series** (`3d-plot1.py` through `3d-plot5.py`): 
+  - Surface plots and parametric surfaces
+  - Vector fields in 3D space
+  - Multiple plot configurations
+  - Coordinate system transformations
+
+#### Cool Scripts
+- **Mandelbulb Fractal** (`mandelbulb.py`): 
+  - 3D fractal generation using spherical coordinates
+  - Cartesian ↔ Spherical coordinate transformations
+  - Iterative escape-time algorithms
+  - 3D animation with matplotlib
+  - Depth sorting for solid appearance
+  - Dynamic camera movements
+
+- **Fractal Collection** (`fractal-collection.py`):
+  - Multiple fractal types (Mandelbrot, Burning Ship, Tricorn)
+  - Functional programming with lambda functions
+  - Complex number mathematics and iterations
+  - Using `map()` for parallel computation
+  - Escape-time coloring algorithms
+  - Animated fractal showcase
+
+- **3D Plot Generator** (`3d-plot-generator.py`):
+  - Interactive 3D surface generation
+  - Customizable mathematical functions
+  - Real-time visualization tools
+
+### Key Concepts Learned
+- Functional programming paradigms (`map`, `filter`, `reduce`, lambda functions)
+- Complex number arithmetic and fractal mathematics
+- 3D coordinate systems and transformations
+- Animation techniques with matplotlib
+- Iterative algorithms and escape-time methods
+- Higher-order functions and function composition
+- Depth sorting and 3D rendering techniques
