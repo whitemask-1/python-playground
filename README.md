@@ -167,3 +167,86 @@ The goal is not perfection, but progression—using code as a medium to think, t
 - Iterative algorithms and escape-time methods
 - Higher-order functions and function composition
 - Depth sorting and 3D rendering techniques
+
+---
+
+## Day 4: Dictionaries, Sets, Modules & Data Management
+
+### Dictionaries and Sets
+- **Dictionaries** (`dictionaries.py`):
+  - Key-value pair data structure
+  - Dictionary creation: literals, `dict()`, `fromkeys()`
+  - Accessing values: bracket notation, `.get()` method
+  - Dictionary methods: `.keys()`, `.values()`, `.items()`, `.update()`, `.pop()`
+  - Nested dictionaries for complex data
+  - Dictionary use cases and when to use them
+
+- **Dictionary Looping** (`dictionary-looping.py`):
+  - Iterating over keys, values, and items
+  - Dictionary comprehensions: `{k: v for k, v in ...}`
+  - Filtering dictionaries with conditions
+  - Transforming dictionary data
+  - Combining multiple dictionaries
+
+- **Sets** (`sets.py`):
+  - Unordered collections of unique elements
+  - Set creation and literals: `{1, 2, 3}`
+  - Set operations: union, intersection, difference, symmetric difference
+  - Set methods: `.add()`, `.remove()`, `.discard()`, `.pop()`
+  - Mathematical set operations: `|`, `&`, `-`, `^`
+  - Use cases: removing duplicates, membership testing, set algebra
+
+### Input Handling & Data Processing
+- **List Inputs & Unpacking** (`list-inputs-unpacking.py`):
+  - Collecting multiple inputs into lists
+  - Unpacking lists to multiple variables
+  - Using `.split()` for parsing input strings
+  - Handling whitespace with default `.split()`
+  - Type conversion during unpacking
+  - Extended unpacking with `*` operator
+
+- **Number Pattern Generator** (`num-pattern.py`):
+  - Pattern generation algorithms
+  - Nested loops for 2D patterns
+  - String formatting for visual output
+
+- **PIN Extractor** (`pin-extractor.py`):
+  - String manipulation and parsing
+  - Extracting specific data patterns
+  - Input validation and error handling
+
+### Projects
+- **Medical Validator** (`medical-validator.py`):
+  - Dictionary-based data validation
+  - Checking required fields and data types
+  - Applied dictionaries for structured data
+  - Real-world data validation patterns
+
+### Libraries and Modules
+- **Custom Library** (`library.py`):
+  - Creating reusable functions
+  - Module organization and imports
+  - Code modularity and DRY principles
+  - Building your own function library
+
+### Personal Movie Tracker (PMT)
+- **Project Planning** (`PMT_README.md`):
+  - Comprehensive project roadmap
+  - Designed multi-phase development plan
+  - Core features: add movies, track watch status, ratings, statistics
+  - Future enhancements: data persistence (JSON), search/filter, matplotlib visualizations
+  - Planned integrations: OMDB API, genre analysis, recommendation system
+  - Learning progression from CLI to potential GUI
+  - Applied dictionary concepts to real-world tracking problem
+
+### Key Concepts Learned
+- **Data Structures**: Dictionaries vs sets vs lists - when to use each
+- **Key-Value Storage**: Efficient data organization and retrieval
+- **Set Theory**: Mathematical operations on collections
+- **Dictionary Comprehensions**: Concise dictionary transformations
+- **Input Processing**: Parsing and validating user input
+- **Code Organization**: Creating reusable modules and libraries
+- **Project Planning**: Breaking large projects into phases
+- **Real-World Applications**: Building tools for personal use
+
+---
