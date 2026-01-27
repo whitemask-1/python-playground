@@ -1,3 +1,46 @@
+# 🎬 Interactive Movie Tracker
+
+A personal movie management system to track films you want to watch and movies you've already seen. Built with Python dictionaries and interactive command-line interface.
+
+---
+
+## 📖 Project Overview
+
+**Core Concept:** 
+Create a dynamic watchlist that lets you add movies, flip their status between "to watch" and "watched", rate them, and visualize your viewing habits.
+
+**Why This Project?**
+- Combines dictionaries, sets, and data structures from Day 4
+- Practical application you'll actually use
+- Expandable with unlimited features
+- Great foundation for learning file I/O, data visualization, and APIs
+
+---
+
+## 🎯 Core Features (Phase 1)
+
+### Essential Functionality
+1. **Add Movies** - Add new movies to your watchlist with optional genre
+2. **Mark as Watched** - Flip movie status to "watched" with optional rating
+3. **Mark as Unwatched** - Move movies back to your to-watch list
+4. **View All Movies** - See your entire collection with status indicators
+5. **Filter by Status** - View only "to watch" or "watched" movies
+6. **Statistics Dashboard** - Total movies, watched count, average rating
+
+### Data Structure
+movies = {
+"Inception": {
+"status": "watched",
+"genre": "Sci-Fi",
+"rating": 9
+},
+"Interstellar": {
+"status": "to_watch",
+"genre": "Sci-Fi",
+"rating": None
+}
+}
+
 ### User Experience
 - Interactive menu-driven interface
 - Visual indicators (✓ for watched, ○ for to-watch)

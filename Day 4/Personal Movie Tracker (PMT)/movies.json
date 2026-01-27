@@ -1,0 +1,12 @@
+{
+    "Cloudy With a chance of Meatballs": {
+        "status": "watched",
+        "genre": "Comedy",
+        "rating": "\u2726\u2726\u2726\u2726"
+    },
+    "Interstellar": {
+        "status": "to watch",
+        "genre": "Sci-Fi",
+        "rating": null
+    }
+}
