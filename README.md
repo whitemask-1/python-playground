@@ -250,3 +250,56 @@ The goal is not perfection, but progression—using code as a medium to think, t
 - **Real-World Applications**: Building tools for personal use
 
 ---
+
+## Day 5: Error Handling & Debugging
+
+### Error Handling Fundamentals
+- **Exception Handling** (`exception-handling.py`):
+  - `try/except` blocks for catching errors
+  - Multiple except clauses for different exception types
+  - `else` clause for code that runs when no exception occurs
+  - `finally` clause for cleanup code that always runs
+  - Exception object access and error messages
+
+- **Common Errors** (`errors.py`):
+  - `ValueError` - Invalid values for correct type
+  - `TypeError` - Wrong data type operations
+  - `ZeroDivisionError` - Division by zero
+  - `IndexError` - List index out of range
+  - `KeyError` - Dictionary key doesn't exist
+  - `FileNotFoundError` - File operations on non-existent files
+  - `AttributeError` - Invalid attribute access
+
+- **Raising Exceptions** (`raise.py`):
+  - Using `raise` keyword to throw exceptions
+  - Creating custom error messages
+  - Re-raising exceptions after logging
+  - When to raise vs. handle exceptions
+  - Input validation with custom exceptions
+
+- **Debugging Techniques** (`debugging.py`):
+  - Using `print()` statements for debugging
+  - Python debugger (`pdb`) basics
+  - Tracing execution flow
+  - Identifying and fixing logic errors
+  - Stack traces and error messages
+
+### Projects
+- **User Configuration Validator** (`userconfig.py`):
+  - Comprehensive input validation with error handling
+  - Type checking and range validation
+  - Required field verification
+  - Graceful error recovery with user-friendly messages
+  - Applied exception handling to real-world scenario
+  - Defensive programming patterns
+
+### Key Concepts Learned
+- **Exception Hierarchy**: Understanding Python's exception class structure
+- **Error vs Exception**: Syntax errors vs runtime exceptions
+- **Defensive Programming**: Validating inputs before processing
+- **Graceful Degradation**: Handling errors without crashing
+- **Error Propagation**: When to catch vs. let errors bubble up
+- **Debugging Workflow**: Systematic approach to finding and fixing bugs
+- **User Experience**: Providing helpful error messages to users
+
+---
