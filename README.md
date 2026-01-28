@@ -303,3 +303,81 @@ The goal is not perfection, but progression—using code as a medium to think, t
 - **User Experience**: Providing helpful error messages to users
 
 ---
+
+## Day 6: Object-Oriented Programming & Classes
+
+### Classes and Objects Fundamentals
+- **Classes and Objects** (`classes+objects.py`):
+  - Class definition with `class` keyword
+  - `__init__()` constructor method for initialization
+  - Instance attributes (self.attribute)
+  - Creating objects/instances from classes
+  - Understanding `self` parameter
+  - Class vs instance concepts
+
+- **Methods and Attributes** (`methods+attributes.py`):
+  - Instance methods that operate on object data
+  - Accessing attributes with `self.attribute`
+  - Calling methods on objects: `object.method()`
+  - Method parameters and return values
+  - Encapsulation - keeping data and methods together
+
+- **Special Methods** (`special-methods.py`):
+  - `__str__()` for human-readable string representation
+  - `__repr__()` for developer-friendly representation
+  - `__len__()` for custom length behavior
+  - `__add__()` for custom addition operator
+  - Dunder methods (double underscore) overview
+  - Operator overloading basics
+
+- **Dynamic Attribute Handling** (`dynamic-attr-handling.py`):
+  - `getattr(object, name)` - get attribute by string name
+  - `setattr(object, name, value)` - set attribute dynamically
+  - `hasattr(object, name)` - check if attribute exists
+  - `delattr(object, name)` - delete attribute
+  - Dynamic attribute access patterns
+
+### Projects
+
+- **Planet Class** (`planets.py`):
+  - Created Planet objects with name, type, and star attributes
+  - Implemented `orbit()` method to describe planetary motion
+  - Custom `__str__()` for formatted planet descriptions
+  - Input validation with `isinstance()` checks
+  - Raised `TypeError` for wrong types, `ValueError` for empty strings
+  - Caught exceptions during object creation to keep program running
+  - Applied error handling patterns in OOP context
+
+- **Musical Instruments** (`musical-instruments.py`):
+  - Built MusicalInstrument class with play() method
+  - Different instrument types produce different sounds
+  - Practice with instance methods and attributes
+
+- **Email Simulator** (`email-sim.py`):
+  - Created Email class with sender, recipient, subject
+  - Implemented send() and receive() methods
+  - Simulated email operations with object-oriented design
+
+- **ISBN Validator** (`ISBN-validator.py`):
+  - Validated ISBN-10 and ISBN-13 formats
+  - Parsed comma-separated input values
+  - Checked for proper format (commas present)
+  - Validated length parameter is a number
+  - Converted string digits to integer list with list comprehension
+  - Applied checksum algorithms for ISBN validation
+  - Comprehensive error handling with user-friendly messages
+  - Input validation: format checking, type validation, value ranges
+
+### Key Concepts Learned
+- **Object-Oriented Programming**: Organizing code with classes and objects
+- **Encapsulation**: Bundling data and methods that work on that data
+- **Instance vs Class**: Understanding object instances vs class definitions
+- **Constructor Pattern**: Using `__init__()` to set up object state
+- **Method Calls**: How objects interact through methods
+- **Special Methods**: Customizing Python's built-in operations
+- **Input Validation in OOP**: Enforcing rules in constructors
+- **Error Handling in Classes**: Raising exceptions vs catching them
+- **Separation of Concerns**: Class validates, caller handles errors
+- **List Comprehensions with Conversion**: Processing digit strings efficiently
+
+---
