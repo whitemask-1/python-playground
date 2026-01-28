@@ -197,3 +197,26 @@ def plot_3d_equation():
 
 if __name__ == "__main__":
     plot_3d_equation()
+
+# FEATURE IDEA: Continuity Checker for 3D Surfaces
+# ================================================
+# Concept: Analyze 3D surfaces for continuity and discontinuities
+# - Detect jumps/breaks in surface (undefined regions, asymptotes)
+# - Identify points where function is discontinuous
+# - Highlight discontinuous regions with different colors
+# - Calculate gradient magnitude to find sharp changes
+# - Visual indicators: color discontinuities red, continuous regions green
+# - Add menu option "Check Continuity" alongside coordinate finder
+# - Report statistics: % of surface continuous, number of breaks
+# - Useful for calculus homework - verify continuity at specific points
+# - Could extend to differentiability checking (check partial derivatives)
+#
+# Technical approach:
+# - Use np.gradient() to compute rate of change
+# - Set threshold for "too steep" = discontinuity
+# - Mask regions where Z has NaN or large jumps
+# - Create separate scatter plots for continuous/discontinuous points
+# - Add toggle to show/hide discontinuity overlay
+#
+# Future enhancement: Integrate with coordinate finder to check continuity at specific (x,y) points
+# This would combine matplotlib visualization with mathematical analysis for calculus applications
