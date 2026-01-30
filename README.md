@@ -535,3 +535,79 @@ The goal is not perfection, but progression—using code as a medium to think, t
 - **OOP Design Patterns**: Single Responsibility, composition, encapsulation in practice
 
 ---
+
+## Day 8: Persistent State Management & Rich Terminal UI
+
+### Enhancements to The Daily Bugle News System
+
+#### What Changed
+- **Added 6 APIs**
+- **Rate limits now persist** across sessions (saves to `~/.dailybugle/rate_limit_state.json`)
+- **User's API choice persists** (saves to `~/.dailybugle/config.json`)
+- **Added Rich library** for colorful, formatted terminal UI
+- **Rate limit dashboard** showing status of all 6 APIs
+
+#### Implementation Highlights
+
+**Persistent Rate Limiting**:
+```python
+class RateLimiter:
+    def _save_state(self):
+        """Save call counts to JSON after each API request"""
+        with open(self.state_file, 'w') as f:
+            json.dump(dict(self.api_calls), f, indent=2)
+    
+    def _load_state(self):
+        """Load previous session's call counts on startup"""
+        if self.state_file.exists():
+            with open(self.state_file, 'r') as f:
+                self.api_calls = defaultdict(list, json.load(f))
+```
+
+**Rich Terminal UI**:
+```python
+from rich.console import Console
+from rich.table import Table
+from rich.panel import Panel
+
+console = Console()
+
+# Colored tables
+table = Table(show_header=True, box=box.ROUNDED)
+table.add_column("#", style="cyan")
+table.add_column("Title", style="bold yellow")
+
+# Styled panels
+panel = Panel(content, border_style="blue", box=box.ROUNDED)
+console.print(panel)
+
+# Interactive prompts
+choice = Prompt.ask("[bold cyan]Your choice[/bold cyan]", choices=["1", "2", "3"])
+```
+
+**Config Persistence**:
+```python
+def _save_config(self):
+    """Save user's preferred API to config file"""
+    config = {
+        'current_api': 'guardian',  # or whichever user selected
+        'last_updated': datetime.now().isoformat()
+    }
+    with open(self.config_file, 'w') as f:
+        json.dump(config, f, indent=2)
+```
+
+#### New Features
+- **Option 5**: View rate limit status for all APIs in a table
+- **Menu header**: Shows current API and remaining calls
+- **Color-coded warnings**: Green/yellow/red based on quota usage
+- **Loading spinners**: Visual feedback during API requests
+- **Scheduled fetch**: Now uses your saved API preference
+
+#### Key Learnings
+- **State persistence**: Saving data between sessions using JSON
+- **Rich library**: Professional CLI formatting with minimal code
+- **User experience**: Visual feedback, colors, and helpful messages
+- **Cross-script state**: Config shared between interactive and scheduled scripts
+
+---
