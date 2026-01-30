@@ -536,9 +536,7 @@ The goal is not perfection, but progression—using code as a medium to think, t
 
 ---
 
-## Day 8: Persistent State Management & Rich Terminal UI
-
-### Enhancements to The Daily Bugle News System
+## Day 8: Enhancements to The Daily Bugle News System
 
 #### What Changed
 - **Added 6 APIs**
