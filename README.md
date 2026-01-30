@@ -381,3 +381,157 @@ The goal is not perfection, but progression—using code as a medium to think, t
 - **List Comprehensions with Conversion**: Processing digit strings efficiently
 
 ---
+
+## Day 7: Advanced OOP & Daily Bugle Project
+
+### Advanced OOP Concepts
+
+- **Abstraction** (`abstraction.py`):
+  - Abstract Base Classes (ABC) using `abc` module
+  - `@abstractmethod` decorator for defining abstract methods
+  - Abstract classes cannot be instantiated directly
+  - Subclasses must implement all abstract methods
+  - Creating simplified interfaces that hide complexity
+  - Animal hierarchy: Dog, Cat, Fish with `make_sound()` method
+  - PaymentProcessor system: PayPal and Stripe implementations
+  - Understanding "what something does" vs "how it does it"
+
+- **Polymorphism** (`polymorphism.py`):
+  - Objects of different types responding to same method call
+  - Method overriding in subclasses
+  - Shape calculator with Circle, Rectangle, Square classes
+  - Unified `area()` method across different shapes
+  - Using `isinstance()` for type checking
+  - Common interface pattern for different implementations
+
+- **Inheritance** (`inheritance.py`):
+  - Parent-child class relationships for code reuse
+  - Using `super()` to call parent class methods
+  - Person → Student → GraduateStudent hierarchy
+  - Extending attributes through inheritance chain
+  - Multiple inheritance with Teacher class (Person + Employee)
+  - Method resolution order (MRO)
+  - When to use inheritance vs composition
+
+- **Encapsulation** (`oop+encapsulation.py`):
+  - Controlling access to object data
+  - Public attributes (normal access)
+  - Protected attributes (`_attribute`) - convention for internal use
+  - Private attributes (`__attribute`) - name mangling
+  - Understanding `_ClassName__attribute` transformation
+  - Preventing direct access to sensitive data
+
+- **Getters and Setters** (`getters+setters.py`):
+  - `@property` decorator for getter methods
+  - `@attribute.setter` decorator for setter methods
+  - Validation in setters before updating attributes
+  - Read-only properties (getter without setter)
+  - Computed properties that calculate values
+  - Pythonic alternative to traditional getter/setter methods
+
+- **Name Mangling** (`name-mangling.py`):
+  - How Python mangles private attributes
+  - `__private` becomes `_ClassName__private`
+  - Accessing mangled attributes (not recommended)
+  - Use cases for true privacy vs convention
+
+### Practice Projects
+
+- **Salary Tracker** (`salary-tracker.py`):
+  - Encapsulation with private `__salary` attribute
+  - `@property` getter for read-only salary access
+  - Setter with validation for salary increases only
+  - Demonstrates data protection and controlled modification
+  - Name mangling in action
+
+- **Character Stat Tracker** (`character-stat-track.py`):
+  - Protected `_health` and `_mana` attributes
+  - Property decorators for stat validation
+  - Range checking (0-100 for stats)
+  - Prevents invalid stat values
+  - Game-style attribute management
+
+### Daily Bugle News Scraper Project
+
+**Goal**: CLI application that fetches NY Times top stories, displays details, and archives articles
+
+#### Architecture (OOP Design)
+- **Article Class**:
+  - Stores article data: title, abstract, byline, url, published_date, section
+  - `full_details` attribute for detailed API data
+  - `__str__()` for basic display format
+  - `display_full_details()` for comprehensive article view
+  - `to_dict()` for JSON serialization
+  - Timestamp tracking with `fetched_at`
+
+- **NYTimesAPI Class**:
+  - Handles all API interactions
+  - API key from environment variable (`os.getenv()`)
+  - `fetch_top_stories()` - Top Stories API endpoint
+  - `fetch_article_details()` - Article Search API with URL filter
+  - Error handling with `raise ConnectionError` for failed requests
+  - Parses JSON responses into Article objects
+
+- **NewsArchive Class**:
+  - Manages collection of archived Article objects
+  - `add_to_archive()` with type checking
+  - `__len__()` returns article count
+  - `__str__()` for archive summary
+  - `display_all()` shows all archived articles with timestamps
+
+- **DailyBugleMenu Class**:
+  - Main application with menu-driven interface
+  - Composition pattern: contains NYTimesAPI and NewsArchive instances
+  - Dictionary dispatch for menu routing
+  - Menu options: view stories, manage schedule, toggle scheduler, archives, exit
+
+#### Features Implemented
+- ✅ Fetch top 20 stories from NY Times Top Stories API
+- ✅ Display headlines with numbered list
+- ✅ User selects article to view full details
+- ✅ Fetch comprehensive data from Article Search API
+- ✅ Display lead_paragraph and snippet in formatted output
+- ✅ Contextual archiving: save article after viewing details
+- ✅ View all archived articles with fetch timestamps
+- ✅ Dictionary dispatch pattern for clean menu handling
+- ✅ Error handling: raise within methods, catch at appropriate levels
+- ✅ Environment variable configuration for API key
+
+#### API Integration
+- **Top Stories Endpoint**: `https://api.nytimes.com/svc/topstories/v2/home.json`
+  - Returns latest articles from home section
+  - Provides basic info: title, abstract, byline, url, date
+  
+- **Article Search Endpoint**: `https://api.nytimes.com/svc/search/v2/articlesearch.json`
+  - Uses filter query (`fq`) parameter to search by URL
+  - Returns detailed content: lead_paragraph, snippet, multimedia
+
+#### Usage Flow
+1. View today's top stories (fetches from API)
+2. Select article number to see full details
+3. Fetch detailed information from Article Search API
+4. Display comprehensive article with lead paragraph and snippet
+5. Option to archive the article after viewing
+6. Access old archives to review previously saved articles
+
+#### Next Steps (Planned)
+- [ ] Scheduler implementation with `schedule` library for 8am automated fetches
+- [ ] JSON persistence: save/load archives to file
+- [ ] Rich library integration for colored terminal output
+- [ ] Section selection (world, business, technology, sports)
+- [ ] Search within archived articles
+- [ ] Export to Markdown or PDF
+
+### Key Concepts Learned
+- **Abstraction**: Hiding implementation details, exposing simplified interfaces
+- **Polymorphism**: Same method call, different behaviors based on object type
+- **Inheritance**: Code reuse through parent-child relationships
+- **Encapsulation**: Protecting data with access control mechanisms
+- **Property Decorators**: Pythonic getters/setters with validation
+- **Composition over Inheritance**: Building complex systems by combining objects
+- **Dictionary Dispatch**: Clean menu routing without if-elif chains
+- **API Integration**: Working with REST APIs and environment variables
+- **Error Handling Strategy**: Raising errors in handlers, catching at appropriate levels
+- **OOP Design Patterns**: Single Responsibility, composition, encapsulation in practice
+
+---
