@@ -215,6 +215,7 @@ if __name__ == "__main__":
 # - Use np.gradient() to compute rate of change
 # - Set threshold for "too steep" = discontinuity
 # - Mask regions where Z has NaN or large jumps
+# - Overlay discontinuity map on original surface plot
 # - Create separate scatter plots for continuous/discontinuous points
 # - Add toggle to show/hide discontinuity overlay
 #
