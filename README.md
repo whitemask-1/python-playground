@@ -609,3 +609,172 @@ def _save_config(self):
 - **Cross-script state**: Config shared between interactive and scheduled scripts
 
 ---
+
+## Day 8: Common Data Structures & Algorithms + Daily Bugle Enhancements
+
+### Common Data Structures
+
+- **Static vs Dynamic Arrays** (`dynamic+static-arrays.py`):
+  - **Static Arrays**: Fixed size, faster access (O(1)), stack-allocated memory
+  - When to use: Known size in advance, frequent access, embedded systems
+  - Limitations: Cannot grow or shrink, manual resizing requires copying
+  - **Dynamic Arrays**: Flexible size, automatic resizing, heap-allocated
+  - Python's list type is a dynamic array implementation
+  - Time complexity: Access O(1), Insert at end O(1) average/O(n) worst, Insert middle O(n)
+  - When to use: Unknown size, frequently changing data, continuous additions
+  - Trade-offs: Resizing overhead vs memory flexibility
+
+- **Linked Lists** (`linked-lists.py`):
+  - **Singly Linked Lists**: Nodes with data and next pointer
+  - Head node as entry point, tail points to None
+  - Time complexity: Insert/delete at beginning O(1), at end O(n), search O(n)
+  - When to use: Frequent insertions/deletions at beginning, unknown size
+  - **Doubly Linked Lists**: Nodes with previous and next pointers
+  - Bidirectional traversal, head and tail references
+  - Time complexity: Insert/delete at both ends O(1), search O(n)
+  - When to use: Need bidirectional traversal, operations at both ends
+  - Trade-offs: More flexible but higher memory usage than singly linked
+
+- **Maps, Hashmaps, and Sets** (`maps+hashmaps+sets.py`):
+  - **Abstract Data Types (ADT)**: Conceptual representation without implementation details
+  - **Maps**: Key-value pairs with unique keys
+  - Operations: Insert, delete, lookup, update - all O(1) average
+  - When to use: Associate unique keys with values, fast lookups
+  - **Hashmaps**: Implementation using hash functions
+  - Hash function generates index for array storage
+  - Collision resolution: Chaining (linked lists), Open Addressing
+  - Python's dict type is a hashmap implementation
+  - **Sets**: Unordered collections of unique elements
+  - Operations: Add, remove, membership testing - all O(1) average
+  - When to use: Unique elements only, fast membership checks
+
+- **Stacks and Queues** (`stacks+queues.py`):
+  - **Stacks**: LIFO (Last In, First Out) data structure
+  - Operations: Push O(1), Pop O(1), Peek O(1)
+  - Elements added/removed from top only
+  - When to use: Function call management, expression evaluation, backtracking
+  - Python implementation: Using list with `append()` and `pop()`
+  - **Queues**: FIFO (First In, First Out) data structure
+  - Operations: Enqueue O(1), Dequeue O(1), Peek O(1)
+  - Elements added at back, removed from front
+  - When to use: Task scheduling, breadth-first search, request handling
+  - Python implementation: Using `collections.deque` for efficiency
+
+### Algorithms & Complexity Analysis
+
+- **What Are Algorithms** (`what-are-algorithms.py`):
+  - **Definition**: Unambiguous instructions for solving problems
+  - Key characteristics: Definiteness (clear steps), Finiteness (terminates)
+  - Language-independent design, implementation-specific execution
+  - Correctness: Produces expected output for valid inputs
+  - Efficiency: Time complexity (speed) and space complexity (memory)
+  
+- **Big O Notation**:
+  - Describes worst-case performance as input size grows
+  - Growth rate: How time/space requirements change with input
+  - Focus on worst-case for understanding maximum inefficiency
+  
+- **Common Big O Classifications** (most to least efficient):
+  - **O(1) - Constant Time**: Performance doesn't change with input size
+    - Example: Accessing array element by index
+  - **O(log n) - Logarithmic Time**: Divides problem in half each step
+    - Example: Binary search in sorted array
+  - **O(n) - Linear Time**: Performance scales linearly with input
+    - Example: Iterating through array once
+  - **O(n log n) - Linearithmic Time**: Efficient sorting algorithms
+    - Example: Merge sort, Quick sort
+  - **O(n²) - Quadratic Time**: Nested loops over input
+    - Example: Bubble sort, nested iteration
+  - **O(2ⁿ) - Exponential Time**: Doubles with each input increase
+    - Example: Recursive Fibonacci without memoization
+  - **O(n!) - Factorial Time**: Grows factorially with input
+    - Example: Generating all permutations
+  
+- **Problem-Solving Strategies** (`problem-solving.py`):
+  1. **Understand the Problem**: Read carefully, identify input/output, clarify ambiguities
+  2. **Choose the Right Data Structure**: Analyze problem requirements, consider time complexity
+  3. **Plan Your Approach**: Break into smaller parts, outline steps, consider edge cases
+  4. **Implement the Solution**: Write clean code, use built-ins, comment logic, test samples
+  5. **Analyze Complexity**: Evaluate Big O for time and space, optimize if needed
+  - Problem-solving is iterative: revisit and refine based on testing
+  - Regular practice improves pattern recognition and efficiency
+
+### Daily Bugle News System Enhancements
+
+#### What Changed
+- **Added 6 APIs**: Expanded from single NY Times API to multi-provider system
+- **Rate limits now persist** across sessions (saves to `~/.dailybugle/rate_limit_state.json`)
+- **User's API choice persists** (saves to `~/.dailybugle/config.json`)
+- **Added Rich library** for colorful, formatted terminal UI
+- **Rate limit dashboard** showing status of all 6 APIs
+
+#### Implementation Highlights
+
+**Persistent Rate Limiting**:
+```python
+class RateLimiter:
+    def _save_state(self):
+        """Save call counts to JSON after each API request"""
+        with open(self.state_file, 'w') as f:
+            json.dump(dict(self.api_calls), f, indent=2)
+    
+    def _load_state(self):
+        """Load previous session's call counts on startup"""
+        if self.state_file.exists():
+            with open(self.state_file, 'r') as f:
+                self.api_calls = defaultdict(list, json.load(f))
+```
+
+**Rich Terminal UI**:
+```python
+from rich.console import Console
+from rich.table import Table
+from rich.panel import Panel
+
+console = Console()
+
+# Colored tables
+table = Table(show_header=True, box=box.ROUNDED)
+table.add_column("#", style="cyan")
+table.add_column("Title", style="bold yellow")
+
+# Styled panels
+panel = Panel(content, border_style="blue", box=box.ROUNDED)
+console.print(panel)
+
+# Interactive prompts
+choice = Prompt.ask("[bold cyan]Your choice[/bold cyan]", choices=["1", "2", "3"])
+```
+
+**Config Persistence**:
+```python
+def _save_config(self):
+    """Save user's preferred API to config file"""
+    config = {
+        'current_api': 'guardian',  # or whichever user selected
+        'last_updated': datetime.now().isoformat()
+    }
+    with open(self.config_file, 'w') as f:
+        json.dump(config, f, indent=2)
+```
+
+#### New Features
+- **Option 5**: View rate limit status for all APIs in a table
+- **Menu header**: Shows current API and remaining calls
+- **Color-coded warnings**: Green/yellow/red based on quota usage
+- **Loading spinners**: Visual feedback during API requests
+- **Scheduled fetch**: Now uses your saved API preference
+
+### Key Concepts Learned
+- **Data Structures**: Static vs dynamic arrays, linked lists, hash tables, stacks, queues
+- **Abstract Data Types**: Conceptual interfaces vs concrete implementations
+- **Big O Notation**: Asymptotic analysis, worst-case performance, growth rates
+- **Algorithm Efficiency**: Time vs space complexity trade-offs
+- **Problem-Solving Framework**: Systematic approach from understanding to optimization
+- **State Persistence**: Saving data between sessions using JSON
+- **Rich Library**: Professional CLI formatting with minimal code
+- **User Experience**: Visual feedback, colors, and helpful messages
+- **Cross-Script State**: Config shared between interactive and scheduled scripts
+- **Multi-API Architecture**: Managing multiple news providers with unified interface
+
+---
