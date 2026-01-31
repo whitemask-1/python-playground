@@ -590,7 +590,7 @@ class GNewsAPI(NewsAPI):
             'entertainment', 'sports', 'science', 'health'
         ]
 
-    def fetch_top_stories(self, section='general'):
+    def fetch_top_stories(self, section='general', page=1):
         self._check_rate_limit()  # Check rate limit before making request
         try:
             url = f"{self.base_url}/top-headlines"
@@ -599,7 +599,8 @@ class GNewsAPI(NewsAPI):
                 'topic': section,
                 'lang': 'en',
                 'country': 'us',
-                'max': 20
+                'max': 20,
+                'page': page
             }
 
             response = requests.get(url, params=params)
@@ -625,7 +626,7 @@ class GNewsAPI(NewsAPI):
         except requests.RequestException as e:
             raise ConnectionError(f"Failed to fetch from {self.api_name}: {e}")
     
-    def search_articles(self, query):
+    def search_articles(self, query, page=1):
         self._check_rate_limit()  # Check rate limit before making request
         try:
             url = f"{self.base_url}/search"
@@ -634,7 +635,8 @@ class GNewsAPI(NewsAPI):
                 'q': query,
                 'lang': 'en',
                 'max': 20,
-                'sortby': 'publishedAt'
+                'sortby': 'publishedAt',
+                'page': page
             }
             
             response = requests.get(url, params=params)
