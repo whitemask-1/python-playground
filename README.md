@@ -778,3 +778,52 @@ def _save_config(self):
 - **Multi-API Architecture**: Managing multiple news providers with unified interface
 
 ---
+
+## Day 9: Algorithm Practice & Performance Awareness 🎯
+
+**Date:** January 31, 2026
+
+Dove into problem-solving with a focus on algorithmic thinking and performance optimization. Started exploring LeetCode problems to apply data structure knowledge in practical scenarios.
+
+### What I Learned
+
+**Time Complexity Trade-offs:**
+- Discovered that `in` operator on lists is O(n), making nested loops O(n²)
+- Hash sets provide O(1) average lookup time - critical for optimization
+- Understanding the hidden cost of operations is crucial for writing efficient code
+
+**Algorithm Patterns:**
+- **Hash Map Pattern**: Storing complements/seen values for O(1) lookups
+- **Divide and Conquer**: Breaking problems into smaller subproblems recursively
+- **Binary Search**: Continued reinforcement of logarithmic time algorithms
+
+**Problem-Solving Approach:**
+- Getting working solution first, then optimizing
+- Analyzing time and space complexity after implementation
+- Recognizing when a data structure choice impacts performance significantly
+
+### Code Written
+
+```python
+# Contains Duplicate - First working solution
+def hasDuplicate(self, nums: List[int]) -> bool:
+    num_cache = []
+    for num in nums:
+        if num in num_cache:  # O(n) lookup on list
+            return True
+        num_cache.append(num)
+    return False
+# Time: O(n²), Space: O(n)
+```
+
+### Key Takeaways
+
+- **First solve, then optimize** - getting a working solution builds confidence
+- **Data structure choice matters** - list vs. set can be the difference between O(n²) and O(n)
+- **Comment complexity analysis** - helps reinforce understanding and aids future review
+- Problem-solving is a skill that improves with consistent practice
+- Array and string manipulation problems reinforce data structure fundamentals
+
+**Focus Areas:** Hash tables, binary search, divide & conquer, complexity analysis
+
+---
