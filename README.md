@@ -827,3 +827,137 @@ def hasDuplicate(self, nums: List[int]) -> bool:
 **Focus Areas:** Hash tables, binary search, divide & conquer, complexity analysis
 
 ---
+
+## Day 10: Advanced Data Structures - Graphs, Trees & Heaps 🌲
+
+**Date:** February 1, 2026
+
+Explored advanced data structures that model complex relationships and hierarchical data. Focused on graph theory, tree structures, and priority queues—foundational concepts for optimization algorithms and real-world system design.
+
+### Core Concepts
+
+**Graphs** (`graphs.py`):
+- **Nodes (Vertices)**: Objects or entities in the network (users, cities, stations)
+- **Edges (Links)**: Connections or relationships between nodes
+- **Adjacent Nodes**: Directly connected by an edge, also called neighbors
+- **Undirected Graphs**: Bidirectional edges (mutual friendships)
+- **Directed Graphs**: Unidirectional edges (Twitter follows)
+- **Weighted Graphs**: Edges with costs/weights (distances, time)
+- **Unweighted Graphs**: All edges considered equal
+- **Cyclic Graphs**: Contain paths that form loops
+- **Acyclic Graphs**: No cycles (e.g., family trees)
+- **Vertex Labeled Graphs**: Each node has unique identifier
+- **Edge Labeled Graphs**: Each edge has label describing relationship
+- **Disconnected Graphs**: Separate components not connected by any path
+
+**Graph Representations** (`matrices+adjacency-lists.py`):
+- **Adjacency Matrix**: 2D array where rows/columns represent vertices
+  - Values indicate edges: 1 (edge exists) or 0 (no edge)
+  - Weighted graphs store edge weights instead of 1
+  - Time complexity: O(1) to check if edge exists between two nodes
+  - Space complexity: O(V²) - inefficient for sparse graphs
+  - Best for: Dense graphs, frequent edge existence checks
+  
+- **Adjacency List**: Dictionary or array storing neighbors for each node
+  - Dictionary: `{'A': ['B', 'C'], 'B': ['A', 'D']}`
+  - Array: `[['B', 'C'], ['A', 'D'], ...]`
+  - Time complexity: O(N) to check edge (N = number of neighbors)
+  - Space complexity: O(V + E) - efficient for sparse graphs
+  - Best for: Sparse graphs, iterating over all neighbors quickly
+  
+- **Trade-off**: Matrices for fast edge lookup, lists for space efficiency and neighbor iteration
+
+**Graph Traversal Algorithms** (`depth+breadth-first-search.py`):
+- **Breadth-First Search (BFS)**:
+  - Visits all neighbors before moving to next level
+  - Implemented with queue (FIFO) data structure
+  - Algorithm: Start at node → mark visited → add to queue → dequeue → visit unvisited neighbors → repeat
+  - Use case: Finding shortest path in unweighted graphs
+  - Time complexity: O(V + E) where V = vertices, E = edges
+  - Space complexity: O(V) for queue (can be large for wide graphs)
+  - Analyzes all nodes at each level before going deeper
+  
+- **Depth-First Search (DFS)**:
+  - Follows each branch as deep as possible before backtracking
+  - Implemented with recursion or stack (LIFO) data structure
+  - Algorithm: Start at node → mark visited → push to stack → pop → visit unvisited neighbors → repeat
+  - Use case: Detecting cycles, finding connected components, single solution problems
+  - Time complexity: O(V + E)
+  - Space complexity: O(V) for visited set + O(H) for recursion stack (H = height)
+  - More memory efficient than BFS for graphs with large branching factor
+  - Does not guarantee shortest path in unweighted graphs
+  - **Key insight**: `visited` set is shared across all recursive calls (passed by reference), while `start` parameter changes to each neighbor
+
+**Trees & Tries** (`trees+tries.py`):
+- **Tree Properties**:
+  - Acyclic connected graph with hierarchical structure
+  - **Root node**: Top node with no parent, starting point for traversal
+  - **Child nodes**: Nodes directly connected below a parent
+  - **Siblings**: Nodes with the same parent
+  - **Leaf nodes**: Nodes with no children (terminal nodes)
+  - **Height**: Length of longest path from root to leaf
+  - **Depth**: Length of path from root to specific node
+  - **Degree**: Number of children a node has
+
+- **Binary Trees**:
+  - Each node has at most two children (left and right)
+  - Used for expression trees, decision trees, hierarchical data
+
+- **Binary Search Trees (BSTs)**:
+  - Left child < parent node < right child (ordering property)
+  - Average time complexity: O(log n) for search, insert, delete (balanced trees)
+  - Used in databases, indexing systems requiring fast lookups
+
+- **Tries (Prefix Trees)**:
+  - Tree structure optimized for storing and retrieving strings
+  - Each node represents a single character
+  - Path from root to leaf represents complete string
+  - Exploits common prefixes to optimize space and search time
+  - `TrieNode` class with `children` dictionary and `is_end_of_word` flag
+  - `insert()`: Traverse/create nodes for each character, mark end
+  - `search()`: Traverse nodes following characters, check end flag
+  - Use cases: Autocomplete, spell checkers, IP routing
+
+**Priority Queues & Heaps** (`priority-queues+heaps.py`):
+- **Priority Queue (ADT)**:
+  - Elements have associated priorities
+  - Higher priority elements served before lower priority
+  - Use cases: Shortest path algorithms, task scheduling, traffic simulation, data compression
+
+- **Heap Implementation**:
+  - Specialized tree-based structure satisfying heap property
+  - **Max-Heap**: Parent ≥ all children (maximum at root)
+  - **Min-Heap**: Parent ≤ all children (minimum at root)
+  - Root always contains highest/lowest priority element for O(1) access
+  
+- **Array-Based Heap**:
+  - Implemented as arrays for efficient parent/child access
+  - For node at index `i`:
+    - Left child: `2i + 1`
+    - Right child: `2i + 2`
+    - Parent: `(i - 1) // 2`
+
+- **Python's `heapq` Module**:
+  - Efficient min-heap implementation operating on lists
+  - `heappush(heap, item)`: Add element maintaining heap property
+  - `heappop(heap)`: Remove and return smallest element
+  - `heappushpop(heap, item)`: Push then pop in single efficient operation
+  - `heapify(list)`: Transform existing list into heap in-place
+  - **Max-heap trick**: Invert values with `-1` multiplication
+  - **Priority tuples**: `(priority, value)` where lower number = higher priority
+  - Efficient space/time due to array representation
+
+### Key Concepts Learned
+- **Graph Theory**: Modeling complex relationships and networks
+- **Traversal Strategies**: BFS for shortest paths, DFS for exhaustive search
+- **Data Structure Trade-offs**: Matrix vs list, time vs space complexity
+- **Recursive Thinking**: Understanding shared state vs changing parameters in DFS
+- **Tree Hierarchies**: Representing parent-child relationships efficiently
+- **String Optimization**: Tries for prefix-based operations
+- **Priority Management**: Heaps for efficient min/max element access
+- **Array-Based Trees**: Index calculations for parent/child navigation
+- **Algorithm Selection**: Choosing right structure based on problem requirements
+
+**Focus Areas:** Graph representations, BFS/DFS traversal, tree structures, heap operations, space/time trade-offs
+
+---
