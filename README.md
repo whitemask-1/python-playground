@@ -1048,7 +1048,7 @@ Explored modern Python tools for data validation, serialization, and structured 
 
 ## Day 13: FastAPI - Modern Web Framework & Async Programming 🚀
 
-**Date:** February 5, 2026
+**Date:** February 4, 2026
 
 Began exploring FastAPI, a modern, high-performance web framework for building APIs with Python. Focused on understanding async programming, type hints in web contexts, and the fundamentals of building fast, production-ready APIs.
 
