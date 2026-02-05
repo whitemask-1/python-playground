@@ -1045,3 +1045,131 @@ Explored modern Python tools for data validation, serialization, and structured 
 **Focus Areas:** Data validation, type annotations, JSON serialization, dataclass decorators, Pydantic models
 
 ---
+
+## Day 13: FastAPI - Modern Web Framework & Async Programming 🚀
+
+**Date:** February 5, 2026
+
+Began exploring FastAPI, a modern, high-performance web framework for building APIs with Python. Focused on understanding async programming, type hints in web contexts, and the fundamentals of building fast, production-ready APIs.
+
+### Core Concepts
+
+**FastAPI Basics** (`what_is_it.py`):
+- **What is FastAPI**: Modern, fast web framework for building APIs with Python based on standard type hints
+- **Built on Starlette**: Uses Starlette for web components, providing high-performance asynchronous capabilities
+- **Automatic Documentation**: Interactive API docs generated automatically from type hints
+- **Pydantic Integration**: Request and response validation through Pydantic models
+- **Type Hints in Web Context**:
+  - Path parameters with type annotations: `@app.get("/items/{item_id}")`
+  - Query parameters with defaults: `q: str = None`
+  - Return type annotations for automatic response validation
+  - Union types for flexible parameter handling: `int | float`
+  - Optional parameters using `typing.Optional[int]` (equivalent to `Union[int, None]`)
+
+- **Async Functions**: 
+  - `async def` enables handling multiple requests concurrently
+  - `await` keyword for asynchronous I/O operations
+  - Suitable for high-performance applications
+  - **Important**: Ensure I/O operations within async functions are also async to fully benefit
+
+- **Running FastAPI**:
+  - Use Uvicorn ASGI server: `fastapi dev {file_name}:app --reload`
+  - `--reload` enables auto-restart on code changes (dev mode)
+  - Example: `fastapi dev what_is_it:app --reload`
+
+- **Endpoint Definition**:
+  - `@app.get("/")`: Defines GET endpoint for retrieving data
+  - Path operations return dictionaries automatically serialized to JSON
+  - Route parameters extracted from URL path
+  - Query parameters from URL query string
+
+**Type Hints Deep Dive**:
+- **Union Types**: `int | float` for multiple accepted types (Python 3.10+)
+- **Optional Types**: `typing.Optional[int] = None` (shorthand for `Union[int, None]`)
+- **Return Type Annotations**: `-> str` defines function return type
+- **Class Attributes**: Type hints for instance variables in `__init__`
+- **Benefits**: 
+  - Automatic validation by FastAPI/Pydantic
+  - Better IDE support and autocomplete
+  - Self-documenting code
+  - Automatic API schema generation
+
+**Concurrency & Parallelism** (`concurrency+parallelism.py`):
+- **Concurrency vs Parallelism**:
+  - **Concurrency**: Handling multiple tasks at the same time (task switching)
+  - **Parallelism**: Executing multiple tasks simultaneously (true parallel execution)
+
+- **When to Use Each**:
+  - **Concurrency**: I/O-bound tasks (database queries, API calls, file operations)
+  - **Parallelism**: CPU-bound tasks (intensive computation, data processing)
+
+- **Async/Await Pattern**:
+  - `asyncio.sleep(delay)`: Non-blocking delay for I/O simulation
+  - `asyncio.gather(*tasks)`: Run multiple async tasks concurrently
+  - `asyncio.run(main())`: Entry point for async programs
+  - Tasks start simultaneously and complete based on their delay
+  - Efficient for I/O-bound operations without blocking main thread
+
+- **ProcessPoolExecutor for Parallelism**:
+  - `concurrent.futures.ProcessPoolExecutor`: Execute tasks across multiple CPU cores
+  - `executor.submit(function, args)`: Submit CPU-bound tasks for parallel execution
+  - `task.result()`: Wait for task completion and get result
+  - True parallel execution for CPU-intensive workloads
+  - Output appears after all tasks complete (not interleaved like async)
+
+- **Key Differences**:
+  - **Async (Concurrency)**: Single thread, task switching, faster for I/O
+  - **Multiprocessing (Parallelism)**: Multiple processes, true parallel, faster for CPU tasks
+  - FastAPI leverages async for handling many simultaneous requests efficiently
+
+### Practical Examples
+
+**Simple API Endpoints**:
+```python
+@app.get("/")
+async def read_root():
+    return {"Hello": "World"}
+
+@app.get("/items/{item_id}")
+async def read_item(item_id: int, q: str = None):
+    return {"item_id": item_id, "q": q}
+```
+
+**Concurrent I/O Tasks**:
+```python
+async def fake_io_task(task_id: int, delay: float):
+    await asyncio.sleep(delay)
+    print(f"Task {task_id} completed after {delay} seconds")
+
+# Tasks run concurrently, complete in order of delay
+await asyncio.gather(
+    fake_io_task(1, 2),
+    fake_io_task(2, 1),
+    fake_io_task(3, 3)
+)
+```
+
+**Parallel CPU Tasks**:
+```python
+with ProcessPoolExecutor() as executor:
+    tasks = [
+        executor.submit(cpu_bound_task, 1, 10**6),
+        executor.submit(cpu_bound_task, 2, 10**6),
+    ]
+    for task in tasks:
+        task.result()  # Wait for completion
+```
+
+### Key Concepts Learned
+- **Modern Python Web Development**: FastAPI as production-ready framework
+- **Type-Driven Development**: Using type hints for validation and documentation
+- **Async Programming**: Non-blocking I/O for concurrent request handling
+- **Performance Optimization**: Choosing between concurrency and parallelism
+- **ASGI Servers**: Uvicorn for running async Python web applications
+- **API Design Patterns**: Path parameters, query parameters, automatic JSON serialization
+- **Concurrent Execution Models**: Event loop vs multiprocessing
+- **I/O vs CPU Bound**: Identifying task types and appropriate handling strategies
+
+**Focus Areas:** FastAPI basics, async/await patterns, type hints in APIs, concurrency models, parallelism with multiprocessing
+
+---
