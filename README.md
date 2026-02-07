@@ -1172,4 +1172,26 @@ with ProcessPoolExecutor() as executor:
 
 **Focus Areas:** FastAPI basics, async/await patterns, type hints in APIs, concurrency models, parallelism with multiprocessing
 
+## Day 14: Advanced Algorithms & Data Traversal
+
+### Neetcode
+- **Group Anagrams** (`Neetcode/group-anagrams.py`): Grouping words by anagram similarity using hash maps
+- **Is Palindrome** (`Neetcode/is_palindrome.py`): Checking if a string is a palindrome efficiently
+
+### Recursive Data Traversal
+- **Factorial** (`Recursive Data Traversal/factorial.py`): Recursive calculation of factorial
+- **Fibonacci** (`Recursive Data Traversal/fibonacci.py`): Recursive and iterative Fibonacci sequence generation
+- **Intro** (`Recursive Data Traversal/intro.py`): Introduction to recursive traversal concepts
+- **Quicksort** (`Recursive Data Traversal/quicksort.py`): Recursive quicksort algorithm implementation
+- **Walking HCL** (`Recursive Data Traversal/walking-hcl.py`): Traversing HCL data structures recursively
+- **Walking JSON** (`Recursive Data Traversal/walking-json.py`): Recursive traversal of JSON data
+- **Walking YAML** (`Recursive Data Traversal/walking-yaml.py`): Recursive traversal of YAML data
+
+---
+## Day 15: Data Structures with NetworkX
+
+### NetworkX
+- **Info** (`NetworkX/info.py`): Overview and exploration of NetworkX library features
+- **Learning Data Structures with NetworkX** (`NetworkX/learning data structures with nx/data-structs.md`): Applying NetworkX to learn and visualize data structures
+
 ---
