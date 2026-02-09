@@ -1195,3 +1195,35 @@ with ProcessPoolExecutor() as executor:
 - **Learning Data Structures with NetworkX** (`NetworkX/learning data structures with nx/data-structs.md`): Applying NetworkX to learn and visualize data structures
 
 ---
+
+## Day 16: Dynamic Arrays & LeetCode Practice
+
+**Date:** February 9, 2026
+
+Focused on array manipulation, dynamic resizing, and classic LeetCode-style problems. Practiced implementing efficient solutions and understanding underlying data structure mechanics.
+
+### Core Concepts & Practice
+
+- **Dynamic Arrays** (`dynamic-array.py`, `easy-dynamic-array.py`):
+  - Manual implementation of dynamic arrays (resizing, appending, capacity doubling)
+  - Comparison to Python's built-in list behavior
+  - Space/time trade-offs in dynamic resizing
+
+- **LeetCode Array Problems**
+  - **Products Except Self** (`products-except-self.py`):
+    - Compute output array where each element is the product of all other elements
+    - Achieved O(n) time, O(1) extra space (excluding output)
+    - Used prefix and suffix product patterns
+  - **Valid Sudoku** (`valid-sudoku.py`):
+    - Checked 9x9 grid for row, column, and box validity
+    - Used sets for fast duplicate detection
+    - Practiced nested iteration and constraint checking
+
+### Key Concepts Learned
+- How dynamic arrays grow and why doubling strategy is efficient
+- Prefix/suffix product patterns for array problems
+- Efficient duplicate detection with sets
+- Translating problem statements into code step-by-step
+- Importance of edge case handling in algorithmic problems
+
+---
