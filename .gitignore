@@ -1,26 +1,31 @@
 # Environment variables
 .env
+.env.*
 
 # Python cache
 __pycache__/
 *.pyc
+*.pyo
 
-# Test files (if you don't want to track them)
-test_*.py
+# Virtual environment
+.venv/
 
-# Personal data
-movies.json
-pmt.log
-logs/
-*.log
 # IDE settings
 .vscode/
 .idea/
 .ipynb_checkpoints/
+*.swp
+
 # macOS system files
 .DS_Store
-# Virtual environment
-.venv/
-.venv/*
-# Ignore all files in .venv except the .gitignore itself
-!.venv/.gitignore
+
+# Logs
+*.log
+logs/
+
+# Generated data
+*.db
+*.sqlite3
+
+# Project-specific data files
+projects/movie-tracker/movies.json
