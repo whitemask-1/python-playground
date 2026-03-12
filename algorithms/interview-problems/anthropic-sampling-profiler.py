@@ -31,24 +31,16 @@ def convert_to_trace(samples: List[Sample]) -> List[Event]:
 
     return event_list
 
-
-
-
-
-    raise NotImplementedError("Function not implemented")
-
 if __name__ == "__main__":
     s1 = Sample(7.5, ["main"])
     s2 = Sample(9.2, ["main", "my_fn"])
     s3 = Sample(10.7, ["main"])
+    s4 = Sample(15.5, ["main", "my_fn", "my_fn2"])
+    s5 = Sample(19.2, ["main", "my_fn"])
 
-    samples = [s1, s2, s3]
+    samples = [s1, s2, s3, s4, s5]
     events = convert_to_trace(samples)
 
     for e in events:
         print(e.kind, e.ts, e.name)
 
-# Expected output matches what's in the comments:
-# start 7.5 main
-# start 9.2 my_fn
-# end 10.7 my_fn
