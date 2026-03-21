@@ -10,7 +10,7 @@ async def read_root():
     return {"Hello": "World"}
 
 @app.get("/items/{item_id}") # @app.get defines a GET endpoint, a GET endpoint is used to retrieve data from the server which in this case is an item by its ID.
-async def read_item(item_id: int, q: str = None):
+async def read_item(item_id: int, q: str):
     return {"item_id": item_id, "q": q}
 
 # The async calls in FastAPI allow for handling multiple requests concurrently, making it suitable for high-performance applications.
