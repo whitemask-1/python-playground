@@ -1,11 +1,14 @@
 import os
+import json
 import requests
 from dotenv import load_dotenv
+from typing import Tuple
+
 
 load_dotenv()
 weather_api_key = os.getenv("WEATHER_API_KEY")
 
-def check_for_current_location():
+def check_for_current_location() -> tuple[float,float]: 
     """Source the current location file for current coordinates + configuration"""
 
     current_directory = os.path.dirname(__file__)
@@ -13,8 +16,9 @@ def check_for_current_location():
 
     if os.path.exists(config_dir):
         with open(config_dir) as config_file:
-            current_location = config_file.read()
-            return current_location
+            current_location = json.load(config_file)
+            lat, lon = current_location
+            return lat, lon
     else:
         while True:
 
@@ -32,23 +36,28 @@ def check_for_current_location():
                 if state_code.lower() in ("q", "quit"):
                     break
 
-            city_code = input("Enter City (e.g. London or Brooklyn)")
+            city_code = input("Enter City (e.g. London or Brooklyn): ")
             user_input.insert(0, city_code)
 
             if city_code.lower() in ("q", "quit"):
                 break
 
             try:
-                lat, lon = _geocode_align("".join(user_input))
+                lat, lon = _geocode_align(", ".join(user_input))
+                with open(config_dir, "w") as config_file:
+                    json.dump([lat,lon], config_file)
+                print("Success")
+                return lat, lon
+
             except (ValueError, RuntimeError) as e:
                 print(f"Error: {e}. Try again.")
+                continue
+    raise ValueError("Bye Bye")
 
-            else:
-                with open(config_dir, "w") as config_file:
-                    config_file.write(f'"current_location":{lat}, {lon}')
-                return 
+                
 
-def _geocode_align(user_location):
+
+def _geocode_align(user_location: str):
     """Use Geocode API to convert input location into coordinates for the Weather API"""
 
     params = {"q" : user_location, "limit" : 1, "appid" : weather_api_key}
@@ -70,3 +79,5 @@ def _geocode_align(user_location):
         raise RuntimeError(f"Geocoding API unreachable: {err}") from err
 
 
+
+print(type(check_for_current_location()))
