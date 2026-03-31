@@ -2,7 +2,6 @@ import os
 import json
 import requests
 from dotenv import load_dotenv
-from typing import Tuple
 
 
 load_dotenv()
@@ -77,7 +76,3 @@ def _geocode_align(user_location: str):
 
     except requests.RequestException as err:
         raise RuntimeError(f"Geocoding API unreachable: {err}") from err
-
-
-
-print(type(check_for_current_location()))

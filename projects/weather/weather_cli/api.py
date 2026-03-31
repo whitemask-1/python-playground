@@ -1,6 +1,5 @@
 import os
 import requests
-import location
 from typing import Any
 from dotenv import load_dotenv
 
@@ -25,5 +24,3 @@ def get_weather_from_coords(coordinates: tuple[float, float]) -> dict[str, Any]:
     except requests.RequestException as err:
         raise RuntimeError(f"Weather Overview API unreachable: {err}") from err
 
-current_loc = location.check_for_current_location()
-get_weather_from_coords(current_loc)
