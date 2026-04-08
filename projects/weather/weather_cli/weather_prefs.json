@@ -1,0 +1,15 @@
+{
+  "minimal": {
+    "fields": [
+      "feels_like",
+      "temperature",
+      "visibility",
+      "wind",
+      "location",
+      "conditions",
+      "clouds",
+      "humidity"
+    ],
+    "unit_system": "metric"
+  }
+}

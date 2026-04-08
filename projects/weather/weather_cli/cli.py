@@ -64,7 +64,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     return parser
 
-def handle_new_profile(name: str, args: argparse.Namespace) -> None:
+def handle_new_profile( name: str, args: argparse.Namespace) -> None:
     fields = set(args.fields) if args.fields else None
     unit_system = args.units if args.units else "imperial"
 
